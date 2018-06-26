@@ -2208,9 +2208,9 @@ neweb-components@^0.13.23:
     morphdom "^2.3.3"
     rxjs-compat "^6.2.0"
 
-neweb-core@^0.17.4:
-  version "0.17.4"
-  resolved "https://registry.yarnpkg.com/neweb-core/-/neweb-core-0.17.4.tgz#0b77965a43411a01d887889f0a7704496afab6e3"
+neweb-core@^0.17.5:
+  version "0.17.5"
+  resolved "https://registry.yarnpkg.com/neweb-core/-/neweb-core-0.17.5.tgz#6ac26fbf30315443dddd1042b83a50b2271a4da2"
   dependencies:
     "@types/debug" "^0.0.30"
     "@types/node" "^10.3.5"
@@ -2797,6 +2797,10 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
 slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
+
+sleep-es6@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/sleep-es6/-/sleep-es6-0.0.2.tgz#470b0913dab29c201ed969406670a18813e90f8d"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"

@@ -28,6 +28,7 @@ export class NewebBrowser {
             replaceRootComponent: (
                 component: PageRendererComponent,
             ) => void | Promise<void>;
+            history?: History;
         },
     ) {
         this.serverTransport = {
@@ -131,6 +132,36 @@ export class NewebBrowser {
         });
         this.serverTransport.onConnect.next(serverTransportClient);
         this.clientTransport.onConnect.next();
+        const history = this.config.history || window.history;
+        const realHistoryPushState: typeof history.pushState = history.pushState.bind(
+            history,
+        );
+        const realHistoryReplaceState: typeof history.replaceState = history.replaceState.bind(
+            history,
+        );
+        history.pushState = (
+            data: any,
+            title?: string | undefined,
+            param3?: string | null | undefined,
+        ): void => {
+            client.emitNavigate.next({ url: data });
+            return realHistoryPushState(data, title, param3);
+        };
+        history.replaceState = (
+            data: any,
+            title?: string | undefined,
+            param3?: string | null | undefined,
+        ): void => {
+            client.emitNavigate.next({ url: data });
+            return realHistoryReplaceState(data, title, param3);
+        };
+        window.addEventListener(
+            "popstate",
+            (e) => {
+                client.emitNavigate.next({ url: e.state });
+            },
+            false,
+        );
     }
 }
 export default NewebBrowser;

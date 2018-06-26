@@ -13,6 +13,7 @@ function render(params) {
             root.innerHTML = "";
             neweb_components_1.render(component, root);
         },
+        history: params.history,
     }).start({ url: params.url || window.location.href });
 }
 exports.render = render;
