@@ -1,8 +1,5 @@
 import sleep from "sleep-es6";
 import { render } from ".";
-import IndexController from "./__fixtures__/frames/index/controller";
-import IndexView from "./__fixtures__/frames/index/view";
-import Router from "./__fixtures__/Router";
 const moduleResolver = (path: string) => {
     return require.requireActual(__dirname + "/__fixtures__/" + path);
 };
