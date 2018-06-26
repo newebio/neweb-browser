@@ -33,7 +33,7 @@
     "dependencies": {
         "@types/debug": "^0.0.30",
         "debug": "^3.1.0",
-        "neweb-core": "^0.17.5",
+        "neweb-core": "^0.17.6",
         "rxjs": "^6.2.1"
     },
     "peerDependencies": {
