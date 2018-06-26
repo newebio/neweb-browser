@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const neweb_components_1 = require("neweb-components");
 const NewebBrowser_1 = require("./lib/NewebBrowser");
+var NewebBrowser_2 = require("./lib/NewebBrowser");
+exports.NewebBrowser = NewebBrowser_2.NewebBrowser;
 function render(params) {
     const root = params.root || document.getElementsByTagName("body")[0];
     new NewebBrowser_1.NewebBrowser({

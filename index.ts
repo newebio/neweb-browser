@@ -1,6 +1,7 @@
 import { render as renderNewebComponents } from "neweb-components";
 import { NewebBrowser } from "./lib/NewebBrowser";
 
+export { NewebBrowser } from "./lib/NewebBrowser";
 export function render(params: {
     root: HTMLElement | null;
     resolveModule: (path: string) => any;
