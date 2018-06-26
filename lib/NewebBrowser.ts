@@ -14,7 +14,7 @@ import {
     PageRouteByFrame,
     Server,
 } from "neweb-core";
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 export class NewebBrowser {
     public server: Server;
     protected clientTransport: any;
@@ -29,6 +29,7 @@ export class NewebBrowser {
                 component: PageRendererComponent,
             ) => void | Promise<void>;
             history?: History;
+            onChangePopState?: Observable<string>;
         },
     ) {
         this.serverTransport = {
@@ -155,13 +156,19 @@ export class NewebBrowser {
             client.emitNavigate.next({ url: data });
             return realHistoryReplaceState(data, title, param3);
         };
-        window.addEventListener(
-            "popstate",
-            (e) => {
-                client.emitNavigate.next({ url: e.state });
-            },
-            false,
-        );
+        if (this.config.onChangePopState) {
+            this.config.onChangePopState.subscribe((newUrl) => {
+                client.emitNavigate.next({ url: newUrl });
+            });
+        } else {
+            window.addEventListener(
+                "popstate",
+                (e) => {
+                    client.emitNavigate.next({ url: e.state });
+                },
+                false,
+            );
+        }
     }
 }
 export default NewebBrowser;
